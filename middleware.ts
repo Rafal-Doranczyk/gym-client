@@ -12,9 +12,9 @@ export default async function AuthMiddleware(req: NextRequest) {
     secret: process.env.NEXT_PUBLIC_SECRET,
   });
 
-  const isProtectedPath = pathname.startsWith(APP_ROUTES.DASHBOARD_PAGE_PATH);
+  const shouldRedirect = pathname.startsWith(APP_ROUTES.DASHBOARD_PAGE_PATH) && !token;
 
-  if (isProtectedPath && !token) {
+  if (shouldRedirect) {
     return NextResponse.redirect(new URL(APP_ROUTES.UNAUTHORIZED_PATH, req.url));
   }
 

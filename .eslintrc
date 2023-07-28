@@ -3,6 +3,8 @@
   "plugins": ["prettier"],
   "rules": {
     "prettier/prettier": "warn",
-    "no-console": "warn"
+    "no-console": "warn",
+    "react-hooks/exhaustive-deps": "off"
+    
   }
 }

@@ -1,17 +1,13 @@
 'use client';
 
-import Link from 'next/link';
 import { useContext, useEffect } from 'react';
+import { Box, Typography } from '@mui/material';
 
 import { ToastContext } from '@/providers';
+import { Link } from '@/components';
+import { ErrorPageProps } from '@/types';
 
-type ErrorProps = {
-  error: {
-    message?: string;
-  };
-};
-
-export default function Error({ error }: ErrorProps) {
+export default function Error({ error }: ErrorPageProps) {
   const { handleOpen } = useContext(ToastContext);
 
   useEffect(() => {
@@ -21,10 +17,11 @@ export default function Error({ error }: ErrorProps) {
   }, []);
 
   return (
-    <div>
-      <h1>Global error</h1>
-
-      <Link href="/">Go to login</Link>
-    </div>
+    <Box py={3}>
+      <Typography mb={1} textAlign="center" variant="h5">
+        Global error
+      </Typography>
+      <Link href="/" text="Go to login" textAlign="center" display="block" />
+    </Box>
   );
 }

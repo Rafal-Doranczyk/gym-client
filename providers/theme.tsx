@@ -16,21 +16,11 @@ const THEME_COLORS = {
     main: '#5C5F5F',
     dark: '#4B4E4E',
   },
-  background: {
-    [enums.PALETTE_MODES.DARK]: {
-      default: '#17253D',
-      paper: '#1B2D4B',
-    },
-    [enums.PALETTE_MODES.LIGHT]: {
-      paper: '#FAFAFA',
-      default: '#FFFFFF',
-    },
-  },
 };
 
 export const ThemeContext = createContext({
   mode: enums.PALETTE_MODES.DARK,
-  setMode: (palette: enums.PALETTE_MODES) => {},
+  setMode: (_: enums.PALETTE_MODES) => {},
 });
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
@@ -42,10 +32,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
         palette: {
           mode,
           primary: THEME_COLORS.primary,
-          // background: {
-          //   default: THEME_COLORS.background[mode].default,
-          //   paper: THEME_COLORS.background[mode].paper,
-          // },
+          secondary: THEME_COLORS.secondary,
         },
       }),
     [mode],
